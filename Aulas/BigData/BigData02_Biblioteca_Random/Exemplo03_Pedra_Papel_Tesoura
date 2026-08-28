@@ -1,0 +1,43 @@
+from random import choice
+pontos_jogador = 0
+pontos_pc = 0
+empates = 0
+while True:
+
+  lista_pc = ['PEDRA','PAPEL','TESOURA']
+  escolha = input(f'''
+    Bem vindo ao jogo do Pedra,Papel e Tesoura.
+    Escolha um dos 3 para jogar contra o computador ou digite sair para fugir hahahah
+                ░░░░░░░▄█▄▄▄█▄
+                ▄▀░░░░▄▌─▄─▄─▐▄░░░░▀▄
+                █▄▄█░░▀▌─▀─▀─▐▀░░█▄▄█
+                ░▐▌░░░░▀▀███▀▀░░░░▐▌
+                ████░▄█████████▄░████ !!!
+            Vitórias:{pontos_jogador}
+            Empates:{empates}
+            Derrotas:{pontos_pc}
+
+  ''').upper()
+
+
+  if escolha not in ['PEDRA','PAPEL','TESOURA','SAIR']:
+    print('Escolha inváida. Tente novamente ')
+    continue
+  escolha_pc = choice(lista_pc)
+
+
+  if escolha == 'SAIR':
+    print('O jogo acabou ')
+    break
+  elif escolha == escolha_pc:
+    print(f'Você escolheu {escolha}. E o computador escolheu {escolha_pc}')
+    print('Empate ;/ ')
+    empates += 1
+  elif escolha == 'PEDRA' and escolha_pc == 'TESOURA' or escolha == 'TESOURA' and escolha_pc =='PAPEL' or escolha == 'PAPEL' and escolha_pc == 'PEDRA':
+    print(f'Você escolheu {escolha}. E o computador escolheu {escolha_pc}')
+    print('Você ganhou!!!')
+    pontos_jogador +=1
+  else:
+    print(f'Você escolheu {escolha}. E o computador escolheu {escolha_pc}')
+    print('Você perdeu!!!')
+    pontos_pc +=1
